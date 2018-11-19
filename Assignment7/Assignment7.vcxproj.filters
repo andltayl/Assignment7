@@ -18,5 +18,16 @@
     <ClCompile Include="list_db.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Library.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Library.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="books.txt" />
   </ItemGroup>
 </Project>

@@ -1,6 +1,10 @@
 #pragma once
 #include <string>
- 
+#include <fstream>
+#include <iomanip>
+#include <list>
+#include <iostream>
+
 using namespace std;
 
 struct book {
@@ -22,5 +26,7 @@ public:
 	void author_search(string name);
 	void remove(string name);
 	void write_to_file(string filename);
+private:
+	list<book> books;
 };
 
