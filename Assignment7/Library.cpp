@@ -27,16 +27,18 @@ void Library::read_from_file(string filename)
 	while (iFile) {
 		book temp;
 		string tempName;
+		bool loop = true;
 
 		getline(iFile, temp.title);
 		
-		while (true){
-			cout << temp.aNames.back().back() << endl;
-			if (temp.aNames.back().find('*') != std::string::npos) {
-				temp.aNames.back().pop_back();
-				break;
-			}
+		while (loop){
 			getline(iFile, tempName);
+			
+			if (tempName[tempName.size() - 1] == '*') {
+				tempName.pop_back();
+				loop = false;
+			}
+
 			temp.aNames.push_back(tempName);
 		}
 
@@ -45,7 +47,7 @@ void Library::read_from_file(string filename)
 
 		insert_sorted(temp);
 
-		//iFile.get();
+		iFile.get();
 	}
 
 	iFile.close();
