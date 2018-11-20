@@ -127,12 +127,42 @@ void Library::find_book(string name)
 
 void Library::author_search(string name)
 {
+	list<book>::iterator temp = books.begin();
+	Library results;
+	list<string>::iterator it;
 
+	while (temp != books.end()) {							// Search all the books in the library for the string.
+		for (it = temp->aNames.begin(); it != temp->aNames.end(); it++) {		// Print all author names.
+			if (it->find(name) != std::string::npos) {
+				results.insert_sorted(*temp);
+			}
+		}
+		
+		temp++;
+	}
+	results.print();
 }
 
 void Library::remove(string name)
 {
+	list<book>::iterator temp = books.begin();
+	list<book>::iterator next = ++temp;
+	
+	list<string>::iterator it;
 
+	while (temp != books.end()) {							// Search all the books in the library for the string.
+		for (it = temp->aNames.begin(); it != temp->aNames.end(); it++) {		// Print all author names.
+			if (it->find(name) != std::string::npos || temp->title == name) {
+				books.erase(temp);
+				temp = next;
+			}
+		}
+
+		if (temp != next && temp != books.end()) {
+			temp++;
+			next = ++temp;
+		}
+	}
 }
 
 void Library::write_to_file(string filename)
