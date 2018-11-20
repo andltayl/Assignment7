@@ -39,7 +39,7 @@ void Library::insert_sorted(book addBook)
 			books.push_back(addBook);
 			return;
 		}
-		else if(addBook.title[currChar] < it->title[currChar]) {	// If the new book is less insert it where the iterator currently is.
+		else if (addBook.title[currChar] < it->title[currChar]) {	// If the new book is less insert it where the iterator currently is.
 			books.insert(it, addBook);
 			return;
 		}
@@ -132,12 +132,11 @@ void Library::author_search(string name)
 	list<string>::iterator it;
 
 	while (temp != books.end()) {							// Search all the books in the library for the string.
-		for (it = temp->aNames.begin(); it != temp->aNames.end(); it++) {		// Print all author names.
+		for (it = temp->aNames.begin(); it != temp->aNames.end(); it++) {		// Search all author names.
 			if (it->find(name) != std::string::npos) {
 				results.insert_sorted(*temp);
 			}
 		}
-		
 		temp++;
 	}
 	results.print();
@@ -152,7 +151,7 @@ void Library::remove(string name)
 	list<string>::iterator it;
 
 	while (temp != books.end()) {							// Search all the books in the library for the string.
-		for (it = temp->aNames.begin(); it != temp->aNames.end(); it++) {		// Print all author names.
+		for (it = temp->aNames.begin(); it != temp->aNames.end(); it++) {		// Search all author names and titles.
 			if (it->find(name) != std::string::npos || temp->title == name) {
 				books.erase(temp);
 				temp = next;
