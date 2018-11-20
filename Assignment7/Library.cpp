@@ -146,7 +146,8 @@ void Library::author_search(string name)
 void Library::remove(string name)
 {
 	list<book>::iterator temp = books.begin();
-	list<book>::iterator next = ++temp;
+	list<book>::iterator next = temp;
+	next++;
 	
 	list<string>::iterator it;
 
@@ -155,12 +156,15 @@ void Library::remove(string name)
 			if (it->find(name) != std::string::npos || temp->title == name) {
 				books.erase(temp);
 				temp = next;
+				break;
 			}
 		}
 
-		if (temp != next && temp != books.end()) {
+		if (temp != next) {
 			temp++;
-			next = ++temp;
+		}
+		if (next != books.end()) {
+			next++;
 		}
 	}
 }
